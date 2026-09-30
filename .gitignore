@@ -1,0 +1,47 @@
+# .gitignore — qompassai/android-template
+# Broad starter: delete the sections you don't need per app.
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+*.iml
+
+# --- Rust ---
+target/
+**/*.rs.bk
+# NOTE: keep Cargo.lock committed for apps (reproducible builds).
+
+# --- Android / Gradle ---
+*.apk
+*.aab
+*.ap_
+*.dex
+local.properties
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.hprof
+
+# NEVER commit prebuilt native libs — F-Droid builds everything from source.
+**/jniLibs/
+
+# Keystores and secrets are NEVER committed.
+*.jks
+*.keystore
+*.p12
+
+# --- Emulator / screenshots scratch ---
+*.avd
+screenshots/raw/
+
+# --- Python (tooling scripts) ---
+__pycache__/
+*.py[cod]
+.venv/

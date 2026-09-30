@@ -1,0 +1,78 @@
+# #################################################################
+# fdroiddata/{{APP_ID}}.yml.example — F-Droid build recipe for {{APP_NAME}}.
+# Rename to {{APP_ID}}.yml and fill every TODO. This file is NOT submitted
+# from here; copy it into your fdroiddata fork at metadata/{{APP_ID}}.yml.
+# SPDX-License-Identifier: Apache-2.0
+# #################################################################
+
+# Pick ONE precise category from F-Droid's list (e.g. Puzzle Game, Navigation).
+# Never invent one.
+Categories:
+  - TODO_CATEGORY
+
+License: Apache-2.0
+
+AuthorName: Qompass AI
+AuthorEmail: TODO_AUTHOR_EMAIL
+
+WebSite: https://github.com/qompassai/{{SLUG}}
+SourceCode: https://github.com/qompassai/{{SLUG}}
+IssueTracker: https://github.com/qompassai/{{SLUG}}/issues
+Changelog: https://github.com/qompassai/{{SLUG}}/releases
+
+AutoName: {{APP_NAME}}
+# Description is intentionally absent: the fastlane tree provides it.
+# Never set Name/Summary/Description when fastlane metadata exists.
+
+# Declare honestly. Examples: Tracking, NonFreeNet, NonFreeAssets.
+# Delete the block if the app truly has none.
+AntiFeatures:
+  TODO_ANTIFEATURES
+
+RepoType: git
+Repo: https://github.com/qompassai/{{SLUG}}.git
+
+Builds:
+  - versionName: "1.0.0"
+    versionCode: 1
+    # FULL 40-char SHA of the release commit. Never a tag or branch.
+    commit: TODO_FULL_SHA
+    # Official NDK scheme only: r21e or the full revision (e.g. 30.0.16248370).
+    ndk: TODO_NDK_REVISION
+
+    # --- uncomment the ONE block matching your layout ---
+
+    # cargo-apk layout (pure Rust, e.g. Bevy):
+    #subdir: .
+    #sudo:
+    #  - apt-get update
+    #  - apt-get install -y curl build-essential
+    #init:
+    #  - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+    #  - . "$HOME/.cargo/env"
+    #  - rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android
+    #  - cargo install cargo-apk
+    #build:
+    #  - . "$HOME/.cargo/env"
+    #  - cargo apk build --release
+    #output: target/release/apk/{{SLUG}}.apk
+
+    # gradle layout (Rust core + Gradle shell):
+    #subdir: crates/{{SLUG}}-mobile/android
+    #sudo:
+    #  - apt-get update
+    #  - apt-get install -y curl build-essential
+    #init:
+    #  - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable
+    #  - . "$HOME/.cargo/env"
+    #  - rustup target add aarch64-linux-android armv7-linux-androideabi
+    #  - cargo install cargo-ndk
+    #build:
+    #  - . "$HOME/.cargo/env"
+    #  - cd "$REPO_ROOT" && ./scripts/publish/build-android.sh apk
+    #output: app/build/outputs/apk/release/app-release-unsigned.apk
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: "1.0.0"
+CurrentVersionCode: 1

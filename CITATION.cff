@@ -1,0 +1,9 @@
+# qompassai/android-template/CITATION.cff
+# Replace {{APP_NAME}}, {{SLUG}} and {{DESCRIPTION}} when you instantiate this template.
+cff-version: 1.2.0
+title: "{{APP_NAME}}"
+description: "{{DESCRIPTION}}"
+repository-code: "https://github.com/qompassai/{{SLUG}}"
+license: Apache-2.0
+authors:
+  - name: Qompass AI

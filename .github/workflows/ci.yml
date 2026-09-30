@@ -1,0 +1,34 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Required files present
+        run: |
+          test -f LICENSE
+          test -f README.md
+          test -f CHANGELOG.md
+          test -f TODO.md
+          test -f docs/FDROID.md
+          test -f docs/PLAY_STORE.md
+          test -x scripts/publish/build-android.sh
+          test -x scripts/publish/test-device.sh
+          test -x scripts/publish/screenshots.sh
+          test -x scripts/publish/tbr-keystore.sh
+          test -x scripts/publish/tbr-fdroid-submit.sh
+          grep -q "Apache License" LICENSE
+      - name: Shell scripts parse
+        run: |
+          for f in scripts/publish/*.sh; do bash -n "$f" || exit 1; done
+      - name: No placeholder leaks outside template files
+        # After instantiation there must be no {{PLACEHOLDER}} left in
+        # README.md or CITATION.cff. (The template repo itself keeps them.)
+        run: |
+          if [ "${{ github.repository }}" != "qompassai/android-template" ]; then
+            ! grep -rn "{{" README.md CITATION.cff
+          fi
