@@ -5,7 +5,7 @@
 
 > {{DESCRIPTION}}
 
-![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+<a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License: Apache 2.0"></a>
 
 A Qompass AI Android app — Rust-first, published to Google Play and F-Droid
 from this repo's `scripts/` and `docs/`, in the standard Qompass AI layout.
